@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee Club — Aprenda a operar o mercado de café verde</title>
+<meta name="description" content="Curso ao vivo sobre o mercado de café verde: bolsa de NY, precificação, hedge, macroeconomia e análise. Do básico ao avançado.">
+
+<!-- ============================================================= -->
+<!--  COFFEE CLUB — Landing Page                                   -->
+<!--                                                               -->
+<!--  >>> IMPORTANTE: TROQUE O LINK DE PAGAMENTO <<<               -->
+<!--  Procure por  https://pay.kiwify.com.br/QEo1At8  neste arquivo       -->
+<!--  (aparece em 3 botões) e substitua pelo link REAL do          -->
+<!--  checkout da sua Kiwify. Use Ctrl+F / "Localizar e substituir"-->
+<!-- ============================================================= -->
+
+<style>
+  :root{
+    --cafe-escuro:#2b1b12;
+    --cafe:#4a2f1e;
+    --cafe-medio:#6f4526;
+    --caramelo:#b9793f;
+    --dourado:#d9a441;
+    --creme:#f6efe6;
+    --creme-2:#efe3d4;
+    --texto:#33261d;
+    --texto-claro:#f6efe6;
+    --verde-cafe:#5b6b3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--texto);
+    background:var(--creme);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{line-height:1.2;letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  .center{text-align:center}
+
+  /* ---------- BOTÕES ---------- */
+  .btn{
+    display:inline-block;
+    background:linear-gradient(180deg,var(--dourado),var(--caramelo));
+    color:#2b1b12;
+    font-weight:800;
+    font-size:1.05rem;
+    text-decoration:none;
+    padding:18px 30px;
+    border-radius:14px;
+    box-shadow:0 8px 22px rgba(185,121,63,.35);
+    transition:transform .15s ease,box-shadow .15s ease;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+    letter-spacing:.02em;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(185,121,63,.45)}
+  .btn.block{display:block;width:100%;max-width:420px;margin:0 auto}
+  .micro{font-size:.85rem;color:var(--cafe-medio);margin-top:12px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(120% 100% at 50% 0%,#3a2417 0%,var(--cafe-escuro) 60%,#1c110a 100%);
+    color:var(--texto-claro);
+    text-align:center;
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(60% 40% at 50% 120%,rgba(217,164,65,.18),transparent 70%);
+    pointer-events:none;
+  }
+  .badge{
+    display:inline-block;background:rgba(217,164,65,.14);color:var(--dourado);
+    border:1px solid rgba(217,164,65,.4);border-radius:999px;
+    font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:7px 16px;margin-bottom:22px;
+  }
+  .hero h1{font-size:2.1rem;margin-bottom:18px}
+  .hero .sub{font-size:1.12rem;color:#e9dcc9;max-width:620px;margin:0 auto 30px;opacity:.95}
+  .hero .micro{color:#c9b79c}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0}
+  .alt{background:var(--creme-2)}
+  .dark{background:var(--cafe-escuro);color:var(--texto-claro)}
+  .dark h2{color:#fff}
+  .kicker{
+    text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;
+    color:var(--caramelo);margin-bottom:10px;
+  }
+  h2{font-size:1.7rem;margin-bottom:20px}
+  .lead{font-size:1.12rem}
+
+  /* ---------- LISTAS ---------- */
+  ul.check{list-style:none;margin:8px 0 0}
+  ul.check li{position:relative;padding:10px 0 10px 34px;border-bottom:1px solid rgba(111,69,38,.12)}
+  ul.check li::before{
+    content:"✓";position:absolute;left:0;top:9px;
+    color:var(--verde-cafe);font-weight:900;font-size:1.1rem;
+  }
+  .dark ul.check li{border-bottom:1px solid rgba(255,255,255,.1)}
+  .dark ul.check li::before{color:var(--dourado)}
+
+  ul.pain{list-style:none;margin:8px 0 0}
+  ul.pain li{position:relative;padding:9px 0 9px 30px}
+  ul.pain li::before{content:"•";position:absolute;left:6px;top:6px;color:var(--caramelo);font-size:1.3rem}
+
+  /* ---------- MÓDULOS ---------- */
+  .mods{display:grid;gap:14px;margin-top:8px}
+  .mod{
+    background:var(--creme);border:1px solid rgba(111,69,38,.15);
+    border-radius:14px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .dark .mod{background:#382113;border-color:rgba(255,255,255,.08)}
+  .mod .num{
+    flex:0 0 auto;width:40px;height:40px;border-radius:10px;
+    background:linear-gradient(180deg,var(--dourado),var(--caramelo));
+    color:#2b1b12;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  }
+  .mod h3{font-size:1.05rem;margin-bottom:4px}
+  .mod p{margin:0;font-size:.95rem;color:#d9c8b3}
+  .dark .mod h3{color:#fff}
+
+  /* ---------- OFERTA / PREÇO ---------- */
+  .price-card{
+    background:#fff;border:2px solid var(--dourado);border-radius:20px;
+    padding:34px 26px;max-width:520px;margin:0 auto;
+    box-shadow:0 18px 40px rgba(43,27,18,.15);text-align:center;
+  }
+  .price-card ul.check{text-align:left;margin-bottom:22px}
+  .price-old{color:#9a8a78;text-decoration:line-through;font-size:1.05rem}
+  .price-now{font-size:2.6rem;font-weight:900;color:var(--cafe);line-height:1.1;margin:4px 0}
+  .price-now small{display:block;font-size:1rem;font-weight:600;color:var(--cafe-medio);margin-top:4px}
+  .pay{font-size:.9rem;color:var(--cafe-medio);margin:14px 0 24px}
+
+  /* ---------- OBJEÇÕES / FAQ ---------- */
+  .qa{background:var(--creme);border-radius:14px;padding:20px 22px;margin-bottom:14px;border:1px solid rgba(111,69,38,.12)}
+  .qa h3{font-size:1.06rem;margin-bottom:6px;color:var(--cafe)}
+  .qa p{margin:0;color:#4a3a2d}
+
+  details.faq{
+    background:var(--creme);border:1px solid rgba(111,69,38,.15);border-radius:12px;
+    padding:0 20px;margin-bottom:12px;overflow:hidden;
+  }
+  details.faq summary{
+    cursor:pointer;list-style:none;font-weight:700;color:var(--cafe);
+    padding:18px 0;position:relative;padding-right:30px;
+  }
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::after{content:"+";position:absolute;right:4px;top:16px;font-size:1.4rem;color:var(--caramelo)}
+  details.faq[open] summary::after{content:"–"}
+  details.faq p{padding:0 0 18px;margin:0;color:#4a3a2d}
+
+  /* ---------- GARANTIA ---------- */
+  .guarantee{
+    background:var(--creme-2);border:2px dashed var(--caramelo);border-radius:18px;
+    padding:30px 26px;max-width:600px;margin:0 auto;text-align:center;
+  }
+  .guarantee .seal{font-size:2.4rem}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:radial-gradient(120% 100% at 50% 0%,#3a2417,var(--cafe-escuro) 70%,#160d07);
+    color:var(--texto-claro);text-align:center;padding:60px 0;
+  }
+  .cta-final h2{color:#fff;font-size:1.9rem}
+  .cta-final p{color:#e2d3bf}
+
+  /* ---------- PS ---------- */
+  .ps{border-left:4px solid var(--caramelo);background:var(--creme);padding:20px 22px;border-radius:0 12px 12px 0}
+  .ps strong{color:var(--cafe)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--cafe-escuro);color:#c9b79c;text-align:center;padding:34px 0;font-size:.85rem}
+  footer a{color:var(--dourado);text-decoration:none}
+
+  /* ---------- BARRA FIXA MOBILE ---------- */
+  .sticky-cta{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(27,16,10,.96);backdrop-filter:blur(6px);
+    padding:12px 16px;display:none;box-shadow:0 -6px 20px rgba(0,0,0,.3);
+  }
+  .sticky-cta .btn{display:block;width:100%;padding:15px}
+  @media(max-width:640px){
+    .hero h1{font-size:1.72rem}
+    h2{font-size:1.45rem}
+    .price-now{font-size:2.2rem}
+    section{padding:44px 0}
+    .sticky-cta{display:block}
+    body{padding-bottom:78px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">☕ Coffee Club</span>
+    <h1>Pare de assistir o preço do café subir e cair sem entender o porquê.</h1>
+    <p class="sub">Em 8 aulas ao vivo, você vai entender o que realmente move o café verde — da bolsa de NY ao dólar, do clima ao hedge — e nunca mais vai negociar no escuro.</p>
+    <a class="btn" href="https://pay.kiwify.com.br/QEo1At8">QUERO ENTRAR NO COFFEE CLUB</a>
+    <p class="micro">Aulas ao vivo + gravadas • Grupo no WhatsApp • Certificado • 12x no cartão</p>
+  </div>
+</header>
+
+<!-- ===================== ABERTURA ===================== -->
+<section>
+  <div class="wrap">
+    <p class="lead">Você convive com café todo dia. Mas tem uma sensação incômoda: o preço se mexe, e você não sabe explicar por quê.</p>
+    <p class="lead">Sobe, cai, dispara numa semana — e você só descobre depois que já era tarde. É como jogar um jogo sem conhecer as regras.</p>
+    <p class="lead">O Coffee Club existe pra virar essa chave. Aula após aula, ao vivo, você vai enxergar o mercado por dentro — e finalmente operar com clareza, não com medo.</p>
+  </div>
+</section>
+
+<!-- ===================== DOR ===================== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="kicker">Se você atua com café</div>
+    <h2>Provavelmente já sentiu isso:</h2>
+    <ul class="pain">
+      <li>Aquela sensação de estar sempre um passo atrás do preço.</li>
+      <li>Ver o café despencar e não saber se foi o dólar, o clima ou a bolsa.</li>
+      <li>Precificar "no achismo" e depois descobrir que deixou dinheiro na mesa.</li>
+      <li>Ouvir falar de NDF, call, put — e travar, porque ninguém nunca te explicou direito.</li>
+      <li>A frustração de depender da opinião dos outros pra tomar sua própria decisão.</li>
+      <li>Saber que dá pra fazer melhor, mas não ter quem te ensine na prática.</li>
+    </ul>
+    <p style="margin-top:22px;font-weight:700;color:var(--cafe)">Não é falta de capacidade. É falta de alguém pra mostrar o caminho.</p>
+  </div>
+</section>
+
+<!-- ===================== SOLUÇÃO ===================== -->
+<section>
+  <div class="wrap">
+    <div class="kicker">A solução</div>
+    <h2>Um curso ao vivo, prático, do básico ao avançado</h2>
+    <p>O Coffee Club é um curso ao vivo onde você aprende, na prática, tudo que move o preço do café verde. Nada de teoria solta.</p>
+    <p>Toda semana, uma aula ao vivo — e no final, um tempo só pra você tirar suas dúvidas.</p>
+    <p>Você começa entendendo a bolsa de NY, aprende a precificar de verdade, mergulha na macroeconomia (dólar, juros, inflação), domina os instrumentos de proteção (NDF, call, put) e termina enxergando o mercado com a cabeça de um trader.</p>
+    <p style="margin-top:18px;padding:18px 20px;background:var(--creme-2);border-radius:12px;border-left:4px solid var(--dourado)">
+      <strong>O diferencial:</strong> você não assiste sozinho. Aula ao vivo, tira-dúvidas em tempo real e um grupo exclusivo no WhatsApp onde você caminha junto com outros alunos e nunca fica travado.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== MÓDULOS ===================== -->
+<section class="dark">
+  <div class="wrap">
+    <div class="kicker">Conteúdo</div>
+    <h2>8 módulos, do zero à visão de trader</h2>
+    <div class="mods">
+      <div class="mod"><div class="num">1</div><div><h3>A Bolsa de Nova York</h3><p>Como funciona a bolsa que referencia o preço do café no mundo e o que move suas cotações.</p></div></div>
+      <div class="mod"><div class="num">2</div><div><h3>Precificação do café verde</h3><p>Como calcular o preço considerando qualidade, diferencial e análise de mercado.</p></div></div>
+      <div class="mod"><div class="num">3</div><div><h3>Precificação avançada e diferencial de qualidade</h3><p>Aprofundamento prático em precificar o café verde e negociar o diferencial.</p></div></div>
+      <div class="mod"><div class="num">4</div><div><h3>Macroeconomia aplicada ao preço</h3><p>Como juros, inflação e dólar impactam diretamente o preço do café verde.</p></div></div>
+      <div class="mod"><div class="num">5</div><div><h3>Exportação e preço internacional</h3><p>Frete, diferencial de peneiras e como esses fatores entram na formação do preço final.</p></div></div>
+      <div class="mod"><div class="num">6</div><div><h3>Hedge: NDF, Call e Put</h3><p>Para que servem os instrumentos de proteção de preço e como usá-los.</p></div></div>
+      <div class="mod"><div class="num">7</div><div><h3>Análise técnica e fundamentalista</h3><p>Estudos gráficos técnicos e análise fundamentalista de clima, dólar e mercado global.</p></div></div>
+      <div class="mod"><div class="num">8</div><div><h3>A visão do trader</h3><p>Análise completa do café e como aplicar tudo isso no seu dia a dia.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BENEFÍCIOS ===================== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="kicker">O que muda pra você</div>
+    <h2>Ao final do Coffee Club, você vai:</h2>
+    <ul class="check">
+      <li>Finalmente <strong>entender o porquê</strong> o café sobe e cai — e parar de ser pego de surpresa.</li>
+      <li>Aprender a <strong>precificar com segurança</strong>, sem deixar dinheiro na mesa.</li>
+      <li>Dominar <strong>proteção de preço</strong> (NDF, call, put) e blindar suas negociações.</li>
+      <li>Ler o cenário completo — <strong>dólar, clima, juros, exportação</strong> — numa decisão só.</li>
+      <li><strong>Tirar suas dúvidas ao vivo</strong>, com resposta na hora.</li>
+      <li>Fazer parte de uma <strong>comunidade ativa</strong> no WhatsApp.</li>
+      <li>Revisitar as <strong>aulas gravadas</strong> quando quiser, sem medo de perder nada.</li>
+      <li>Sair com <strong>certificado</strong> e a confiança de quem entende o próprio mercado.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== OFERTA / PREÇO ===================== -->
+<section>
+  <div class="wrap">
+    <div class="kicker center">A oferta</div>
+    <h2 class="center">Tudo que você recebe</h2>
+    <div class="price-card">
+      <ul class="check">
+        <li>8 aulas ao vivo (1 por semana, 2 meses de curso)</li>
+        <li>Os 8 módulos completos, do básico ao avançado</li>
+        <li>Tira-dúvidas ao vivo no final de cada aula</li>
+        <li>Todas as aulas gravadas (assista quando quiser)</li>
+        <li>Grupo exclusivo no WhatsApp com os alunos</li>
+        <li>Certificado de conclusão</li>
+      </ul>
+      <div class="price-old">De R$ 497</div>
+      <div class="price-now">12x de R$ 49,70<small>ou R$ 497 à vista</small></div>
+      <div class="pay">Pagamento: cartão, Pix ou boleto</div>
+      <a class="btn block" href="https://pay.kiwify.com.br/QEo1At8">GARANTIR MINHA VAGA</a>
+      <p class="micro">Menos de R$ 50 por mês parcelado — por um conhecimento que fica com você pra sempre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBJEÇÕES ===================== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="kicker">Ainda em dúvida?</div>
+    <h2>Deixa eu te ajudar a decidir</h2>
+    <div class="qa"><h3>"R$ 497 é caro..."</h3><p>Um único erro de precificação num negócio de café custa muito mais que isso. O Coffee Club não é gasto — é o conhecimento que te faz parar de perder dinheiro por não entender o mercado. E cabe em 12x de R$ 49,70, menos que um café por dia.</p></div>
+    <div class="qa"><h3>"Serve pra mim, que já atuo na área?"</h3><p>Serve — e é exatamente pra você. Quem já trabalha com café domina o produto, mas nunca aprendeu a mesa de operações. É essa peça que falta que o curso entrega.</p></div>
+    <div class="qa"><h3>"E se eu for iniciante?"</h3><p>O curso vai do básico ao avançado, com linguagem simples e aulas práticas. E como você pode perguntar ao vivo, ninguém fica pra trás.</p></div>
+    <div class="qa"><h3>"Não sei se vou ter tempo."</h3><p>São aulas semanais, e todas ficam gravadas. Você assiste no seu ritmo, quando der.</p></div>
+  </div>
+</section>
+
+<!-- ===================== GARANTIA ===================== -->
+<section>
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="seal">🛡️</div>
+      <h2>Garantia de 7 dias</h2>
+      <p>Entre, assista à primeira aula e sinta o Coffee Club por dentro. Se em 7 dias você achar que não é pra você, devolvo 100% do seu investimento. Sem perguntas, sem burocracia.</p>
+      <p style="margin:0;font-weight:800;color:var(--cafe)">O risco é todo meu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="alt">
+  <div class="wrap">
+    <div class="kicker">Perguntas frequentes</div>
+    <h2>Tudo que você precisa saber</h2>
+    <details class="faq"><summary>Preciso já trabalhar com café pra fazer o curso?</summary><p>Não. O Coffee Club vai do básico ao avançado. Serve pra quem quer começar e pra quem já atua e quer dominar a mesa de operações.</p></details>
+    <details class="faq"><summary>Quanto tempo preciso dedicar por semana?</summary><p>Uma aula ao vivo por semana, durante 2 meses. Tudo fica gravado, então você ajusta ao seu tempo.</p></details>
+    <details class="faq"><summary>As aulas são gravadas?</summary><p>Sim. Todas ficam disponíveis pra você assistir e revisar quando quiser.</p></details>
+    <details class="faq"><summary>Como funciona o grupo no WhatsApp?</summary><p>É um grupo exclusivo dos alunos, pra tirar dúvidas e trocar experiências durante todo o curso.</p></details>
+    <details class="faq"><summary>Eu recebo certificado?</summary><p>Sim, certificado de conclusão ao final dos 8 módulos.</p></details>
+    <details class="faq"><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Se não for pra você, devolvo 100%, sem perguntas.</p></details>
+    <details class="faq"><summary>Quais as formas de pagamento?</summary><p>Cartão (até 12x), Pix ou boleto.</p></details>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Chega de ficar no escuro</h2>
+    <p style="max-width:600px;margin:0 auto 8px">Imagina a próxima vez que o mercado disparar — e você entender exatamente o que está acontecendo, com calma, sabendo o que fazer.</p>
+    <p style="max-width:600px;margin:0 auto 26px">Essa é a diferença entre reagir e decidir. Entre torcer e operar com confiança.</p>
+    <a class="btn" href="https://pay.kiwify.com.br/QEo1At8">QUERO ENTRAR NO COFFEE CLUB</a>
+    <p class="micro" style="color:#c9b79c">Aulas ao vivo + gravações • Grupo no WhatsApp • Certificado • 12x de R$ 49,70</p>
+  </div>
+</section>
+
+<!-- ===================== PS ===================== -->
+<section>
+  <div class="wrap">
+    <div class="ps">
+      <p><strong>P.S.</strong> — O mercado de café não vai parar de se mexer. A única escolha que você tem é continuar assistindo sem entender... ou finalmente aprender a ler cada movimento.</p>
+      <p style="margin:0">São 8 aulas ao vivo, tira-dúvidas em tempo real, grupo no WhatsApp e certificado — por 12x de R$ 49,70, com garantia de 7 dias. Essa é a hora.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>☕ <strong>Coffee Club</strong></p>
+    <p style="margin:6px 0 0">Este site não é afiliado à Kiwify. Pagamento processado em ambiente seguro.</p>
+  </div>
+</footer>
+
+<!-- ===================== BARRA FIXA (MOBILE) ===================== -->
+<div class="sticky-cta">
+  <a class="btn" href="https://pay.kiwify.com.br/QEo1At8">ENTRAR NO COFFEE CLUB — 12x R$ 49,70</a>
+</div>
+
+</body>
+</html>
